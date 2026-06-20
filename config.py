@@ -1,0 +1,9 @@
+import boto3
+
+REGION = "<REGION>"
+ACCOUNT_ID = "<ACCOUNT_ID>"
+ROLE_ARN = "<ROLE_ARN>"
+BUCKET = "<UNIQUE_BUCKET_NAME>"
+PREFIX = "sagemaker"
+DATA_URI = f"s3://{BUCKET}/{PREFIX}/data"
+MODEL_URI = f"s3://{BUCKET}/{PREFIX}/models"
