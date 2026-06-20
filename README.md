@@ -4,12 +4,12 @@ A simple AWS SageMaker helper repository for training, deploying, evaluating, an
 
 ## Project structure
 
+- `pip install -r requirements.txt` – Install the necessary packages.
 - `config.py` – central configuration for AWS region, account, role, bucket, and S3 prefixes.
 - `train.py` – training script.
 - `deploy.py` – deploys a SageMaker endpoint.
 - `evaluate.py` – evaluates the deployed model.
 - `pipeline.py` – pipeline orchestration that runs training, evaluation, and model registration.
-- `run_training.py` – local test entrypoint for training workflows; ignored by git and intended for development/testing only.
 - `test-endpoint.py` – tests the deployed endpoint.
 - `delete-endpoint.py` – deletes the SageMaker endpoint.
 
@@ -36,10 +36,10 @@ A simple AWS SageMaker helper repository for training, deploying, evaluating, an
 
 6. Delete the endpoint immediately
    ```bash
-   aws sagemaker delete-endpoint --endpoint-name churn-classifier-endpoint
+   python delete-endpoint.py
    ```
 
-Can approve through CLI also:
+Models can approve through CLI also instead of using UI:
 
 ```bash
 aws sagemaker list-model-packages \
@@ -94,7 +94,5 @@ The repository uses these S3 paths:
 - Model URI: `s3://<BUCKET>/sagemaker/models`
 
 ## Notes
-
-- `run_training.py` is ignored by git and intended for local testing only.
 - Ensure AWS CLI is configured with credentials that can access SageMaker and the target S3 bucket.
 - Replace `<UNIQUE_BUCKET_NAME>` with the actual bucket name in your `config.py`.
