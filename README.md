@@ -16,23 +16,23 @@ A simple AWS SageMaker helper repository for training, deploying, evaluating, an
 ## Pipeline workflow
 
 1. `python pipeline.py`
-   └─ Triggers SageMaker Pipeline execution
-      ├─ Step 1: `TrainChurnModel` (runs `train.py`)
-      ├─ Step 2: `EvaluateChurnModel` (runs `evaluate.py`)
-      └─ Step 3: `CheckF1Score` → if passed, registers model
+    Triggers SageMaker Pipeline execution
+      Step 1: `TrainChurnModel` (runs `train.py`)
+      Step 2: `EvaluateChurnModel` (runs `evaluate.py`)
+      Step 3: `CheckF1Score` → if passed, registers model
 
 2. Verify pipeline succeeded
-   └─ Check SageMaker console → Pipelines → `ChurnPredictionPipeline`
-   └─ Confirm model appears in Model Registry, `approval_status = PendingManualApproval`
+     Check SageMaker console → Pipelines → `ChurnPredictionPipeline`
+     Confirm model appears in Model Registry, `approval_status = PendingManualApproval`
 
 3. Manually approve the model in registry (or do this via script)
-   └─ Required before `deploy.py` can find an "Approved" model
+     Required before `deploy.py` can find an "Approved" model
 
 4. `python deploy.py`
-   └─ Deploys the approved model to a real-time endpoint
+     Deploys the approved model to a real-time endpoint
 
 5. `python test_endpoint.py`
-   └─ Sends sample data, confirms predictions return correctly
+     Sends sample data, confirms predictions return correctly
 
 6. Delete the endpoint immediately
    ```bash
