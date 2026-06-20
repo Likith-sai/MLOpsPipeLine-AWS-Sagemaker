@@ -16,7 +16,7 @@ A simple AWS SageMaker helper repository for training, deploying, evaluating, an
 ## Pipeline workflow
 
 1. `python pipeline.py`
-    Triggers SageMaker Pipeline execution
+     Triggers SageMaker Pipeline execution
    
       Step 1: `TrainChurnModel` (runs `train.py`)
    
